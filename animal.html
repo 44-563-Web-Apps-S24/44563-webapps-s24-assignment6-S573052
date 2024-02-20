@@ -35,6 +35,33 @@ function checkAnimal (){
     out.innerHTML = "Correct count: "+correct;
 }
 </script>
+<div>
+    <img id ="image" src="apple juice.jpg" alt="apple image" width="150" height="150" onclick="selectImage()">
+
+</div>
+<script>
+    var useImage = 1;
+    var img=document.getElementById("image")
+    function selectImage(){
+        switch(useImage){
+            case 1:
+                img.src="irish-coffee.jpg"
+                useImage=2
+                break
+            case 2:
+                img.src="margarita.jpg"
+                useImage =3
+                break
+            case 3:
+                img.src="apple juice.jpg"
+                useImage =1
+                break
+            default:        
+
+        }
+    }
+    
+</script>
 
 </body>
 </html> 
