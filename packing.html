@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Packing page</title>
+    </head>
+ 
+<body>
+<h1>Keerthi Kamidi packs for a trip</h1>
+<form>
+    <label class="form-check-label" for="c1">Pack light</label>
+    <input class="form-check-input" type="checkbox" id="c1" name="c1" value="True"><br>
+    <label class="form-check-label" for="c2">Carry on</label>
+    <input class="form-check-input" type="checkbox" id="c2" name="c2" value="True"><br>
+    <label class="form-check-label" for="c3">Tablet</label>
+    <input class="form-check-input" type="checkbox" id="c3" name="c3" value="False"><br>
+    <input class="btn-primary" type="button" onclick="selectPack()" value="Select for packing">
+</form>
+<p id="result_pack">Display Result</p>
+<form>
+    <lable class="form-label" for="month">Enter travel month</lable>
+    <input class="form-control" type="text" id="month" name="month" value="May"><br>
+    <label class="form-label" for="price">Enter price</label>
+    <input class="form-control" type="text" id="price" name="price"><br>
+    <input class="btn-light" type="button" onclick="updatePack()" value="Update the pack">
+</form>
+<p id="result_update">Display Result</p>
+<script>
+    var my_pack={}
+    out=document.getElementById("result_pack")
+    function selectPack(){
+        my_pack={}
+        if(document.getElementById("c1").checked==true){
+            my_pack["light"]=true
+        }
+        else{
+            my_pack["light"]=false
+        }
+        if(document.getElementById("c2").checked==true){
+            my_pack["carry"]=true
+        }
+        else{
+            my_pack["carry"]=false
+        }
+        if(document.getElementById("c3").checked==true){
+            my_pack["tablet"]=true
+        }
+        else{
+            my_pack["tablet"]=false
+        }
+        out.innerHTML=JSON.stringify(my_pack)
+    }
+        function updatePack(){
+        month_input=document.getElementById("month").value
+        price_input=document.getElementById("price").value
+        out=document.getElementById("result_update")
+        my_pack["month"]=month_input
+        my_pack["price"]=price_input
+        out.innerHTML=JSON.stringify(my_pack)
+    }
+</script>
+
+
+</body>
+</html> 
