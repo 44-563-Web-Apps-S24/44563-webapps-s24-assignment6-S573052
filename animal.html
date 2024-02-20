@@ -2,6 +2,7 @@
 <html>
  <head>
     <title>Animal game</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
  </head>
 <body>
 <h1>Animal game by Keerthi Kamidi</h1>
@@ -14,8 +15,15 @@
     <input type ="password" id="form1_chicken" name="form1_chicken" value="Chicken"> <br>
     <label for="form1_guess">Guess the animal </label>
     <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
-    <input type="button" onclick="checkAnimal()" value="Check the guess">
+    <input type="button" id="button" onclick="checkAnimal()" value="Check the guess">
 </form>
+<div class="alert alert-danger mt-3" id="incorrect" style="display:none;">
+    No.of Incorrect Guesses: <span id="count">0</span>
+</div>
+ 
+<div class="alert alert-warning mt-3" id="ranoutguess" style="display:none;">
+    Sorry, too many wrong guesses.
+</div>
 <p id="result">Result </p>
 <script> 
 wrong = 0;
@@ -26,11 +34,21 @@ function checkAnimal (){
     guess = document.getElementById("form1_guess").value
     out = document.getElementById("result")
     if(animal==guess){
-        correct+=1;
         alert("Ruff ruff")
+        correct+=1;
     } else {
         wrong+=1;
         alert("Grrrr")
+        document.getElementById("count").textContent=wrong
+                if (wrong >correct) {
+                    document.getElementById("ranoutguess").style.display = "block";
+                    document.getElementById("button").onclick = function () {
+                        alert("Sorry, too many wrong guesses.")
+                     
+                    }
+                } else {
+                    document.getElementById("incorrect").style.display = "block"
+                }
     }
     out.innerHTML = "Correct count: "+correct;
 }
