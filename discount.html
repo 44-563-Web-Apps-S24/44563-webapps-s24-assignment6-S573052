@@ -62,5 +62,36 @@ function resolveForm (){
         document.getElementById("results").innerHTML += myOutput;
     }
 </script>
+<form>
+    <label class="form-check-label" for="radiobtn1">sum</label>
+    <input class="form-check-input" type="radio" name="radiobtn1" id="radiobtn1" value="sum" onclick="chooseOp()"><br>
+    <label class="form-check-label" for="radiobtn2">mult</label>
+    <input class="form-check-input" type="radio" name="radiobtn1" id="radiobtn2" value="multiply" onclick="chooseOp()"><br>
+    <label class="form-check-label" for="radiobtn3">exp</label>
+    <input class="form-check-input" type="radio" name="radiobtn1" id="radiobtn3" value="exponent" onclick="chooseOp()"><br>
+</form>
+<p id="result1">The result will be printed</p>
+<script>
+    function chooseOp(){
+        input_price=Number(document.getElementById("price").value)
+        input_discount =Number(document.getElementById("reduction").value)
+        if(document.getElementById("radiobtn1").checked){
+            var out=""
+            sum=input_price+input_discount
+            out="Sum of " + input_price + " and " + input_discount + " is " + sum
+        }
+        else if(document.getElementById("radiobtn2").checked){
+            var out=""
+            mult=input_price*input_discount
+            out="Product of " + input_price + " and " + input_discount + " is " + mult
+        }
+        else if(document.getElementById("radiobtn3").checked){
+            var out=""
+            exp=input_price**input_discount
+            out="Exponent  of " + input_price + " and " + input_discount + " is " + exp
+        }
+        document.getElementById("result1").innerHTML =out
+    }
+</script>
 </body>
 </html> 
